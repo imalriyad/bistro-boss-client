@@ -1,19 +1,11 @@
+import { Link } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
-import { useEffect, useState } from "react";
-import UseAxios from "../hooks/UseAxios";
 import MenuCard from "../Components/Shared/MenuCard";
+import useMenu from "../hooks/useMenu";
 const PopulerItem = () => {
-  const axios = UseAxios();
-  const [populerItem, setPopulerItem] = useState([]);
+  const [menu] = useMenu();
 
-  useEffect(() => {
-    axios.get("menu.json").then((res) => {
-      const populeritem = res.data.filter(
-        (item) => item.category === "popular"
-      );
-      setPopulerItem(populeritem);
-    });
-  }, [axios]);
+  const populerItem = menu.filter((item) => item.category === "popular");
 
   return (
     <div className="mx-auto max-w-screen-2xl">
@@ -27,7 +19,11 @@ const PopulerItem = () => {
           <MenuCard item={item} key={item._id}></MenuCard>
         ))}
       </div>
-      <div className="text-center "><button className="btn btn-outline border-0 border-b-2">View Full  Menu</button></div>
+      <div className="text-center ">
+        <Link to='/Our Menu' className="btn btn-outline border-0 border-b-2">
+          View Full Menu
+        </Link>
+      </div>
     </div>
   );
 };

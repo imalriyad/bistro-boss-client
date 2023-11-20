@@ -6,4 +6,8 @@
   text-align: center;
 }
 
-
+div a.active{
+  color: #CD9003;
+  font-weight: 800;
+  border-bottom: 2px solid #CD9003;
+}

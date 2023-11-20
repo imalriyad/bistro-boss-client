@@ -10,9 +10,9 @@ import UseAxios from "../hooks/UseAxios";
 const Testimonial = () => {
   const [reviews, setReview] = useState([]);
   const axios = UseAxios();
-  console.log(reviews);
+
   useEffect(() => {
-    axios.get("reviews.json").then((res) => {
+    axios.get("/get-reviews").then((res) => {
       setReview(res.data);
     });
   }, [axios]);
