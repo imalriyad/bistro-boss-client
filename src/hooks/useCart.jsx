@@ -4,6 +4,7 @@ import UseAxios from "./UseAxios";
 const useCart = () => {
   const axios = UseAxios();
   const { user } = useAuth();
+
   const {data:cartItems = [],refetch } = useQuery({
     queryKey: ["cartitem"],
     queryFn: async () => {

@@ -5,8 +5,11 @@ import { MdLibraryBooks, MdEmail } from "react-icons/md";
 import { TiThMenu } from "react-icons/ti";
 import { IoBag } from "react-icons/io5";
 import "./Dashboard.css";
+import useUserRole from "../hooks/useUserRole";
 
 const Dashboard = () => {
+  const isAdmin = useUserRole()
+
   return (
     <div className="flex  bg-[#E8E8E8]">
       {/* Sidebar menu */}
@@ -15,47 +18,53 @@ const Dashboard = () => {
         <p className="   tracking-widest px-4 font-semibold">Restaurant</p>
 
         <div className="mt-14">
-          <NavLink
-            to={"/Dashboard/admin-home"}
-            className="flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
-          >
-            {" "}
-            <FaHome className="text-3xl" />
-            Admin Home
-          </NavLink>
-          <NavLink
-            to={"/Dashboard/add-items"}
-            className=" flex flex-row items-center   uppercase gap-2 mb-4 font-medium px-3"
-          >
-            {" "}
-            <ImSpoonKnife className="text-3xl" />
-            Add items
-          </NavLink>
-          <NavLink
-            to={"/Dashboard/manage-items"}
-            className=" flex flex-row items-center uppercase gap-2 mb-4 font-medium px-3"
-          >
-            {" "}
-            <TiThMenu className="text-3xl" />
-            Manage items
-          </NavLink>
-          <NavLink
-            to={"/Dashboard/manage-bookings"}
-            className=" flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
-          >
-            {" "}
-            <MdLibraryBooks className="text-3xl" />
-            Manage bookings
-          </NavLink>
-          <NavLink
-            to={"/Dashboard/all-user"}
-            className=" flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
-          >
-            {" "}
-            <FaUserEdit className="text-3xl" />
-            all users
-          </NavLink>
 
+          {/* Menus for admin only */}
+       {
+        isAdmin?.admin === true? <>   <NavLink
+        to={"/Dashboard/admin-home"}
+        className="flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
+      >
+        {" "}
+        <FaHome className="text-3xl" />
+        Admin Home
+      </NavLink>
+      <NavLink
+        to={"/Dashboard/add-items"}
+        className=" flex flex-row items-center   uppercase gap-2 mb-4 font-medium px-3"
+      >
+        {" "}
+        <ImSpoonKnife className="text-3xl" />
+        Add items
+      </NavLink>
+      <NavLink
+        to={"/Dashboard/manage-items"}
+        className=" flex flex-row items-center uppercase gap-2 mb-4 font-medium px-3"
+      >
+        {" "}
+        <TiThMenu className="text-3xl" />
+        Manage items
+      </NavLink>
+      <NavLink
+        to={"/Dashboard/manage-bookings"}
+        className=" flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
+      >
+        {" "}
+        <MdLibraryBooks className="text-3xl" />
+        Manage bookings
+      </NavLink>
+      <NavLink
+        to={"/Dashboard/all-user"}
+        className=" flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
+      >
+        {" "}
+        <FaUserEdit className="text-3xl" />
+        all users
+      </NavLink></> : ''
+       }
+
+
+{/* Common user menus */}
           <div className="border-b py-4"></div>
           <div className="mt-4">
             <NavLink

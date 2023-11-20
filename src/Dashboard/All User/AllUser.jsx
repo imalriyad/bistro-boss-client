@@ -4,7 +4,7 @@ import UseAxios from "../../hooks/UseAxios";
 import UserTable from "./UserTable";
 const AllUser = () => {
   const axios = UseAxios();
-  const { data:users,refetch } = useQuery({
+  const { data: users, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axios.get("/users");
@@ -17,8 +17,10 @@ const AllUser = () => {
         subHeading={"How many??"}
         heading={"MANAGE ALL USERS"}
       ></SectionTitle>
-       <div>
-        <h1 className="text-4xl font-semibold my-2">Total Users Found: {users?.length}</h1>
+      <div>
+        <h1 className="text-4xl font-semibold my-2">
+          Total Users Found: {users?.length}
+        </h1>
         <div className="overflow-x-auto bg-white">
           <table className="table ">
             {/* head */}
@@ -33,7 +35,12 @@ const AllUser = () => {
             </thead>
             <tbody>
               {users?.map((user, id) => (
-                <UserTable key={user._id} refetch={refetch} user={user} id={id}></UserTable>
+                <UserTable
+                  key={user._id}
+                  refetch={refetch}
+                  user={user}
+                  id={id}
+                ></UserTable>
               ))}
             </tbody>
           </table>

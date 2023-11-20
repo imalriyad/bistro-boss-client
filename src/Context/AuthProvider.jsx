@@ -11,11 +11,12 @@ import {
 import { useState, useEffect } from "react";
 import { createContext } from "react";
 import auth from "../Firebase/firebase.config";
+import useAxiospublic from "../hooks/useAxiospublic";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
+  const axiosPublic = useAxiospublic();
   const [user, setUser] = useState(null);
   const [isLoading, setLoading] = useState(true);
-
 
   const registeration = (email, password) => {
     setLoading(true);
@@ -44,11 +45,22 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubScribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-
+      if (currentUser) {
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post(`/jwt`, userInfo).then((res) => {
+          if(res.data.token){
+      
+            localStorage.setItem("token", res.data.token);
+          }
+        });
+      }
+      else{
+        localStorage.removeItem("token")
+      }
       setLoading(false);
     });
     return () => unsubScribe();
-  }, []);
+  }, [axiosPublic]);
 
   const authInfo = {
     registeration,

@@ -5,8 +5,29 @@ import swal from "sweetalert";
 import UseAxios from "../../hooks/UseAxios";
 const UserTable = ({ id, user, refetch }) => {
   const axios = UseAxios();
+
+  const handleRole = () => {
+    swal({
+      title: "Are you sure?",
+      text: `You want to make ${user?.name} Admin?`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const role = { role: "admin" };
+        axios.patch(`/make-admin/${user?._id}`, role).then((res) => {
+          if (res.data.modifiedCount > 0)
+            swal(`Yay! ${user?.name} is now An Admin`, {
+              icon: "success",
+            });
+          refetch();
+        });
+      }
+    });
+  };
+
   const handleDelete = (_id) => {
-   
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this Item!",
@@ -37,7 +58,14 @@ const UserTable = ({ id, user, refetch }) => {
         <td>{user?.email}</td>
 
         <td>
-          <FaUsers className="text-3xl cursor-pointer"></FaUsers>
+          {user?.role === "admin" ? (
+            <button className="btn btn-success btn-sm">Admin</button>
+          ) : (
+            <FaUsers
+              onClick={handleRole}
+              className="text-3xl cursor-pointer"
+            ></FaUsers>
+          )}
         </td>
         <td>
           <RiDeleteBin5Fill
