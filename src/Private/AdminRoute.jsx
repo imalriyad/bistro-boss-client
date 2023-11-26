@@ -7,6 +7,7 @@ import useUserRole from "../hooks/useUserRole";
 const AdminRoute = ({children}) => {
     const { user, isLoading } = useAuth();
     const [isAdmin,isAdminLoading] = useUserRole()
+    console.log(isAdminLoading);
     if(isLoading || isAdminLoading ){
         return <div className="max-w-screen-lg text-center mx-auto my-[10%]"><span className="loading loading-spinner loading-lg"></span></div>
       }

@@ -9,7 +9,10 @@ import Dashboard from "../Dashboard/Dashboard";
 import ManageItem from "../Dashboard/ManageItem/ManageItem";
 import Private from "../Private/Private";
 import AllUser from "../Dashboard/All User/AllUser";
-
+import AdminRoute from "../Private/AdminRoute";
+import AddItem from "../Dashboard/AddItem";
+import Cart from "../Dashboard/Cart/Cart";
+import Payment from "../PaymentGetway/Payment";
 
 const router = createBrowserRouter([
   {
@@ -40,36 +43,52 @@ const router = createBrowserRouter([
   },
   {
     path: "Dashboard",
-    element: <Private><Dashboard></Dashboard></Private>,
-    children:[
+    element: (
+      <Private>
+        <Dashboard></Dashboard>
+      </Private>
+    ),
+    children: [
       {
-        path:'/Dashboard/manage-items',
-        element:<Private><ManageItem></ManageItem></Private>
-        
+        path: "/Dashboard/manage-items",
+        element: (
+          <Private>
+            <ManageItem></ManageItem>
+          </Private>
+        ),
       },
       {
-        path:'/Dashboard/all-user',
-        element:<Private><AllUser></AllUser></Private>
-        
-      },
-      
-      {
-        path:'/Dashboard/home',
-        
+        path: "/Dashboard/all-user",
+        element: (
+          <Private>
+            <AllUser></AllUser>
+          </Private>
+        ),
       },
       {
-        path:'/Dashboard/shop',
+        path: "/Dashboard/add-items",
+        element: (
+          <Private>
+            <AdminRoute>
+              <AddItem></AddItem>
+            </AdminRoute>
+          </Private>
+        ),
+      },
+
+      {
+        path: "/Dashboard/home",
         element: <Home></Home>,
       },
       {
-        path:'/Dashboard/menu',
-        
+        path: "/Dashboard/cart",
+        element: <Cart></Cart>,
       },
       {
-        path:'/Dashboard/contact',
-        
+        path: "/Dashboard/cheakout",
+        element: <Payment></Payment>,
       },
-    ]
+    ],
   },
 ]);
 

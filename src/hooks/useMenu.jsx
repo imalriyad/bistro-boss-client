@@ -1,28 +1,24 @@
-import UseAxios from "./UseAxios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiospublic from "./useAxiospublic";
 
 const useMenu = () => {
-  const axios = UseAxios();
-  const [menu, setMenu] = useState([]);
-  const [totalItem, setTotalItem] = useState(0);
-  useEffect(() => {
-    axios
-      .get("/get-total-food")
-      .then((res) => setTotalItem(res.data.totalItem));
-  }, [axios]);
+  const axiosPublic = useAxiospublic();
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemInPage = 6;
-  const numberOfPages = Math.ceil(totalItem / itemInPage);
-  const pages = [...Array(numberOfPages).keys()];
+  const { data: menu, refetch } = useQuery({
+    queryKey: ["allData"],
+    queryFn: async () => {
+      try {
+        const res = await axiosPublic.get(`/get-all-foods`)
+        return res.data;
+      } catch (error) {
+        console.error("Error fetching menu data:", error);
+        throw error; // Rethrow the error so that it's captured by react-query
+      }
+    },
+  });
 
-  useEffect(() => {
-    axios.get(`/get-all-foods`).then((res) => {
-      setMenu(res.data);
-    });
-  }, [axios,currentPage,itemInPage]);
-
-  return [menu, setCurrentPage, currentPage, pages];
+  return [menu, refetch];
 };
 
 export default useMenu;
+

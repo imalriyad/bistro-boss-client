@@ -1,9 +1,9 @@
 import SectionTitle from "../../Components/SectionTitle";
-import useCart from "../../hooks/useCart";
+import useMenu from "../../hooks/useMenu";
 import Table from "./Table";
 
 const ManageItem = () => {
-  const [cartItems, refetch] = useCart();
+  const [menu,refetch] = useMenu()
   return (
     <div>
       <SectionTitle
@@ -12,7 +12,7 @@ const ManageItem = () => {
       ></SectionTitle>
 
       <div>
-        <h1 className="text-4xl font-semibold my-2">Total items Found: {cartItems.length}</h1>
+        <h1 className="text-4xl font-semibold my-2">Total items Found: {menu?.length}</h1>
         <div className="overflow-x-auto bg-white">
           <table className="table ">
             {/* head */}
@@ -27,7 +27,7 @@ const ManageItem = () => {
               </tr>
             </thead>
             <tbody>
-              {cartItems?.map((food, id) => (
+              {menu?.map((food, id) => (
                 <Table key={food._id} food={food} id={id} refetch={refetch}></Table>
               ))}
             </tbody>

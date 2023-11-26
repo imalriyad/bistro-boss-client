@@ -5,7 +5,7 @@ import useMenu from "../hooks/useMenu";
 const PopulerItem = () => {
   const [menu] = useMenu();
 
-  const populerItem = menu.filter((item) => item.category === "popular");
+  const populerItem = menu?.filter((item) => item?.category === "popular");
 
   return (
     <div className="mx-auto max-w-screen-2xl">

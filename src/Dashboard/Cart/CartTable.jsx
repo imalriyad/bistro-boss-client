@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
-import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import swal from "sweetalert";
 import UseAxios from "../../hooks/UseAxios";
 
-const Table = ({ food, id ,refetch}) => {
- 
+const CartTable = ({ food, id ,refetch}) => {
   const axios = UseAxios();
   const { name, _id, image, price } = food;
   const handleDelete = (_id) => {
@@ -18,7 +16,7 @@ const Table = ({ food, id ,refetch}) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        axios.delete(`/delete-from-foods/${_id}`).then((res) => {
+        axios.delete(`/delete-from-cart/${_id}`).then((res) => {
        
           if (res.data.deletedCount > 0) {
             swal(`Poof! ${name} item has been deleted!`, {
@@ -46,9 +44,7 @@ const Table = ({ food, id ,refetch}) => {
         </td>
         <td>{name}</td>
         <td>${price}</td>
-        <td>
-          <FaEdit className="text-2xl cursor-pointer text-[#D1A054]"></FaEdit>
-        </td>
+        
         <td>
           <RiDeleteBin5Fill
             onClick={() => handleDelete(_id)}
@@ -60,4 +56,4 @@ const Table = ({ food, id ,refetch}) => {
   );
 };
 
-export default Table;
+export default CartTable;

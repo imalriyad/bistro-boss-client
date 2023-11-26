@@ -5,23 +5,24 @@ import { MdLibraryBooks, MdEmail } from "react-icons/md";
 import { TiThMenu } from "react-icons/ti";
 import { IoBag } from "react-icons/io5";
 import "./Dashboard.css";
+import { IoBagCheck } from "react-icons/io5";
 import useUserRole from "../hooks/useUserRole";
 
 const Dashboard = () => {
-  const isAdmin = useUserRole()
+  const [isAdmin] = useUserRole()
 
   return (
-    <div className="flex  bg-[#E8E8E8]">
+    <div className="flex bg-[#E8E8E8]">
       {/* Sidebar menu */}
       <div className="menu w-[270px] px-2 py-6 bg-[#D1A054] h-screen menu-vertical">
         <h1 className="font-bold text-3xl px-4">BISTRO BOSS</h1>
-        <p className="   tracking-widest px-4 font-semibold">Restaurant</p>
+        <p className=" tracking-widest px-4 font-semibold">Restaurant</p>
 
-        <div className="mt-14">
+        <div className="mt-14 md:-ml-[240px] md:mt-[85px]">
 
           {/* Menus for admin only */}
        {
-        isAdmin?.admin === true? <>   <NavLink
+        isAdmin === true? <>   <NavLink
         to={"/Dashboard/admin-home"}
         className="flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
       >
@@ -75,7 +76,15 @@ const Dashboard = () => {
               <FaHome className="text-3xl" /> Home
             </NavLink>
             <NavLink
-              to={"/Dashboard/menu"}
+              to={"/Dashboard/cart"}
+              className=" flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
+            >
+              {" "}
+              <IoBagCheck className="text-3xl" />
+              My Cart
+            </NavLink>
+            <NavLink
+              to={"/Our Menu"}
               className=" flex flex-row items-center  uppercase gap-2 mb-4 font-medium px-3"
             >
               {" "}

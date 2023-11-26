@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [cartItems] = useCart();
 
-  const navitem = ["Home", "CONTACT US", "DASHBOARD", "Our Menu", "Our Shop"];
+  const navitem = ["Home", "CONTACT US", "Our Menu", "Our Shop","DASHBOARD"];
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -45,7 +45,7 @@ const Navbar = () => {
   };
 
   const goCart = () => {
-    navigate("/Dashboard");
+    navigate("/Dashboard/cart");
   };
 
   // Calculate cart item price

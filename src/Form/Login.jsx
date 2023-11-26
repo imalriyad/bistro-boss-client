@@ -74,7 +74,7 @@ const Login = () => {
             <input
               type="email"
               {...register("email", { required: true })}
-              id="example1"
+              id="example10"
               className="block input focus:outline-none w-full max-w-md  rounded-md  border-gray-300 shadow-sm  disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
               placeholder="you@email.com"
             />

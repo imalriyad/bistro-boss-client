@@ -5,6 +5,7 @@ import useMenu from "../hooks/useMenu";
 import {Link} from 'react-router-dom'
 const OurMenu = () => {
   const [menu] = useMenu();
+  console.log(menu);
   const offeredItem = menu.filter((item) => item.category === "offered");
   const saladItem = menu.filter((item) => item.category === "salad");
   const dessertItem = menu.filter((item) => item.category === "dessert");
