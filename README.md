@@ -1,8 +1,11 @@
-# React + Vite
+#### Bistro boss resturent mearn project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ - Bistro boss resturent is mearn project where user can order food
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ - Bistro boss has stripe payment system 
+ - Bistro boss is secure with jwt token 
+ - Bistro boss has admin role with dashboard to manage users
+ - Bistro boss has login logout system with firebase 
+ - Used mongodb for database
+ - nodejs and express por server
+ - react and tailwind for frontend 
