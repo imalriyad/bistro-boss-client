@@ -21,6 +21,6 @@ Key Features:
 🌐 React and Tailwind CSS Frontend: The frontend of Bistro Boss is built using React, offering a responsive and interactive user interface. Tailwind CSS enhances the design aesthetics, resulting in a visually appealing and user-friendly application.
 
 ## Live Link : https://bistrobosss.netlify.app/
-Client Repository : https://github.com/imalriyad/bistro-boss-client
-Server  Repository : https://github.com/imalriyad/bistro-boss-server
+## Client Repository : https://github.com/imalriyad/bistro-boss-client
+## Server  Repository : https://github.com/imalriyad/bistro-boss-server
 
