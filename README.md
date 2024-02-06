@@ -1,5 +1,5 @@
 
-## Bistro Boss Restaurant - MERN Stack ProjectBistro Boss Restaurant - MERN Stack Project
+## Bistro Boss Restaurant - MERN Stack Project
 Welcome to Bistro Boss, a full-stack MERN (MongoDB, Express.js, React, Node.js) project designed to revolutionize the restaurant experience. As the lead developer for this endeavor, I spearheaded the creation of a dynamic platform that enables users to effortlessly order their favorite meals online.
 
 Key Features:
